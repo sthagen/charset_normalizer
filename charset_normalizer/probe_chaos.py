@@ -17,6 +17,7 @@ class ProbeChaos:
     def __init__(self, string, giveup_threshold=0.09):
         """
         :param str string:
+        :param float giveup_threshold: When to give up even if _probe has not finished yet
         """
 
         if not isinstance(string, str):
@@ -53,8 +54,10 @@ class ProbeChaos:
 
         self.gave_up = False
 
-        if len(self._string) >= 10:
-            self._probe()
+        if 32 > len(self._string) > 0:
+            self._string *= int(32 / len(self._string)) + 1
+
+        self._probe()
 
     def __add__(self, other):
         """

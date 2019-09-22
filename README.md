@@ -1,4 +1,4 @@
-<h1 align="center">Welcome to Charset Detection for Human 👋</h1>
+<h1 align="center">Welcome to Charset Detection for Human 👋 <a href="https://twitter.com/intent/tweet?text=The%20Real%20First%20Universal%20Charset%20%26%20Language%20Detector&url=https://www.github.com/Ousret/charset_normalizer&hashtags=python,encoding,chardet,developers"><img src="https://img.shields.io/twitter/url/http/shields.io.svg?style=social"/></a></h1>
 
 <p align="center">
   <sup>The Real First Universal Charset Detector</sup><br>
@@ -18,13 +18,19 @@
   </a>
 </p>
 
-> Library that help you read text from unknown charset encoding.<br /> Project motivated by `chardet`, I'm trying to resolve the issue by taking another approach.
+> Library that help you read text from unknown charset encoding.<br /> Project motivated by `chardet`, 
+> I'm trying to resolve the issue by taking another approach.
+> All IANA character set names for which the Python core library provides codecs are supported.
+
+<p align="center">
+  >>>>> <a href="https://charsetnormalizerweb.ousret.now.sh" target="_blank">❤️ Try Me Online NOW ! Then Adopt Me ❤️ </a> <<<<<
+</p>
 
 This project offer you a alternative to **Universal Charset Encoding Detector**, also known as **Chardet**.
 
 | Feature       | [Chardet](https://github.com/chardet/chardet)       | Charset Normalizer | [cChardet](https://github.com/PyYoshi/cChardet) |
 | ------------- | :-------------: | :------------------: | :------------------: |
-| `Fast`         | ❌<br>          | ❌<br>             | ✅ <br>⚡ |
+| `Fast`         | ❌<br>          | ✅<br>             | ✅ <br>⚡ |
 | `Universal**`     | ❌            | ✅                 | ❌ |
 | `Reliable` **without** distinguishable standards | ❌ | ✅ | ✅ |
 | `Reliable` **with** distinguishable standards | ✅ | ✅ | ✅ |
@@ -91,6 +97,8 @@ except IOError as e:
 from charset_normalizer import detect
 ```
 
+Above code will behave the same as **chardet**.
+
 See wiki for advanced usages. *Todo, not yet available.*
 
 ## 😇 Why
@@ -119,9 +127,16 @@ In a way, **I'm brute forcing text decoding.** How cool is that ? 😎
  I know that my interpretation of what is chaotic is very subjective, feel free to contribute in order to 
  improve or rewrite it.
  
- *Coherence :* For each language there is on earth (the best we can), we have computed letter appearance occurrences ranked. So I thought that
+*Coherence :* For each language there is on earth (the best we can), we have computed letter appearance occurrences ranked. So I thought that
  those intel are worth something here. So I use those records against decoded text to check if I can detect intelligent design.
- 
+
+## ⚡ Known limitations
+
+  - Not intended to work on non (human) speakable language text content. eg. crypted text.
+  - When provided trust encoding in headers first. (XML, HTML, HTTP, etc..)
+  - Language detection is unreliable when text contain more than 1 language that are sharing identical letters.
+  - Not well tested with tiny content
+
 ## 👤 Contributing
 
 Contributions, issues and feature requests are very much welcome.<br />
