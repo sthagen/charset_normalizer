@@ -5,6 +5,13 @@ import io
 import os
 
 from setuptools import find_packages, setup
+from re import search
+
+
+def get_version():
+    with open('charset_normalizer/version.py') as version_file:
+        return search(r"""__version__\s+=\s+(['"])(?P<version>.+?)\1""",
+                      version_file.read()).group('version')
 
 # Package meta-data.
 NAME = 'charset_normalizer'
@@ -13,17 +20,19 @@ URL = 'https://github.com/ousret/charset_normalizer'
 EMAIL = 'ahmed.tahri@cloudnursery.dev'
 AUTHOR = 'Ahmed TAHRI @Ousret'
 REQUIRES_PYTHON = '>=3.5.0'
-VERSION = '1.1.0'
+VERSION = get_version()
 
 REQUIRED = [
     'cached_property',
     'dragonmapper',
     'zhon',
-    'prettytable'
+    'prettytable',
+    'loguru'
 ]
 
 EXTRAS = {
-    'permit to generate frequencies.json': ['requests_html', 'requests'],
+    'LetterFrequency': ['requests_html', 'requests'],
+    'UnicodeDataBackport': ['unicodedata2']
 }
 
 

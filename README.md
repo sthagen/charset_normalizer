@@ -6,7 +6,9 @@
     <img src="https://travis-ci.org/Ousret/charset_normalizer.svg?branch=master"/>
   </a>
   <img src="https://img.shields.io/pypi/pyversions/charset_normalizer.svg?orange=blue" />
-  <img src="https://img.shields.io/pypi/dm/charset_normalizer.svg"/>
+  <a href="https://pepy.tech/project/charset-normalizer/">
+    <img alt="Download Count /Month" src="https://pepy.tech/badge/charset-normalizer/month"/>
+  </a>
   <a href="https://github.com/ousret/charset_normalizer/blob/master/LICENSE">
     <img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-purple.svg" target="_blank" />
   </a>
@@ -16,6 +18,7 @@
   <a href="https://codecov.io/gh/Ousret/charset_normalizer">
       <img src="https://codecov.io/gh/Ousret/charset_normalizer/branch/master/graph/badge.svg" />
   </a>
+  <img alt="Download Count Total" src="https://pepy.tech/badge/charset-normalizer" />
 </p>
 
 > Library that help you read text from unknown charset encoding.<br /> Project motivated by `chardet`, 
@@ -37,6 +40,7 @@ This project offer you a alternative to **Universal Charset Encoding Detector**,
 | `Free & Open`  | ✅             | ✅                | ✅ |
 | `Native Python` | ✅ | ✅ | ❌ |
 | `Detect spoken language` | ❌ | ✅ | N/A |
+| `Supported Encoding` | 30 | :tada: [90](https://charset-normalizer.readthedocs.io/en/latest/support.html)  | 40
 
 <p align="center">
 <img src="https://i.imgflip.com/373iay.gif" alt="Reading Normalized Text" width="226"/><img src="https://image.noelshack.com/fichiers/2019/31/5/1564761473-ezgif-5-cf1bd9dd66b0.gif" alt="Cat Reading Text" width="200"/>
@@ -103,9 +107,8 @@ See wiki for advanced usages. *Todo, not yet available.*
 
 ## 😇 Why
 
-When I started using Chardet, I noticed that this library was wrong most of the time 
-when it's not about Unicode, Gb or Big5. That because some charset are easily identifiable 
-because of there standards and Chardet does a really good job at identifying them.
+When I started using Chardet, I noticed that this library was unreliable nowadays and also  
+it's unmaintained, and most likely will never be.
 
 I **don't care** about the **originating charset** encoding, that because **two different table** can 
 produce **two identical file.**
