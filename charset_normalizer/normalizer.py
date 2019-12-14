@@ -275,6 +275,14 @@ class CharsetNormalizerMatches:
         """
         self._matches = matches
 
+        if len(self) > 1 and 'utf_8' in self.could_be_from_charset:
+
+            u8_index = self.could_be_from_charset.index('utf_8')
+
+            # Put UTF_8 at the beginning if not already the case
+            if u8_index > 0:
+                self._matches.insert(1, self._matches.pop(u8_index))
+
     def __iter__(self):
         for elem in self._matches:
             yield elem
@@ -339,6 +347,14 @@ class CharsetNormalizerMatches:
         """
         if not explain:
             logger.disable('charset_normalizer')
+
+        if len(sequences) == 0:
+            return CharsetNormalizerMatch(
+                sequences,
+                'utf-8',
+                0.,
+                []
+            )
 
         too_small_sequence = len(sequences) < 24
 
@@ -452,6 +468,11 @@ class CharsetNormalizerMatches:
             measures = [ProbeChaos(str(sequences[i:i + chunk_size], encoding=p, errors='ignore'), giveup_threshold=threshold, bonus_bom_sig=bom_available, bonus_multi_byte=is_multi_byte_enc) for i in r_]
             ratios = [el.ratio for el in measures]
             nb_gave_up = [el.gave_up is True or el.ratio >= threshold for el in measures].count(True)
+
+            if len(ratios) == 0:
+                logger.warning('{encoding} was excluded because no measure can be done on sequence. ',
+                               encoding=p)
+                continue
 
             chaos_means = statistics.mean(ratios)
             chaos_median = statistics.median(ratios)

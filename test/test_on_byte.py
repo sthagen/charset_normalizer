@@ -5,6 +5,23 @@ from charset_normalizer import CharsetNormalizerMatches as CnM
 
 class TestBytes(unittest.TestCase):
 
+    def test_too_short_none(self):
+        self.assertIsNotNone(
+            CnM.from_bytes(b'\xfe\xff').best().first()
+        )
+
+    def test_empty_bytes(self):
+        r = CnM.from_bytes(b'').best().first()
+
+        self.assertIsNotNone(
+            r
+        )
+
+        self.assertEqual(
+            'utf-8',
+            r.encoding
+        )
+
     def test_bom_detection(self):
         with self.subTest('GB18030 UNAVAILABLE SIG'):
             self.assertFalse(
