@@ -3,9 +3,9 @@
 
 import io
 import os
+from re import search
 
 from setuptools import find_packages, setup
-from re import search
 
 
 def get_version():
@@ -13,27 +13,21 @@ def get_version():
         return search(r"""__version__\s+=\s+(['"])(?P<version>.+?)\1""",
                       version_file.read()).group('version')
 
+
 # Package meta-data.
-NAME = 'charset_normalizer'
-DESCRIPTION = 'The Real First Universal Charset Detector. No Cpp Bindings, Using Voodoo and Magical Artifacts.'
+NAME = 'charset-normalizer'
+DESCRIPTION = 'The Real First Universal Charset Detector. Open, modern and actively maintained alternative to Chardet.'
 URL = 'https://github.com/ousret/charset_normalizer'
 EMAIL = 'ahmed.tahri@cloudnursery.dev'
 AUTHOR = 'Ahmed TAHRI @Ousret'
 REQUIRES_PYTHON = '>=3.5.0'
 VERSION = get_version()
 
-REQUIRED = [
-    'cached_property>=1.5,<2.0',
-    'dragonmapper>=0.2,<0.3',
-    'prettytable>=1.0,<3.0',
-    'loguru>=0.5,<0.6'
-]
+REQUIRED = []
 
 EXTRAS = {
-    'LetterFrequency': ['requests_html', 'requests'],
-    'UnicodeDataBackport': ['unicodedata2']
+    'unicode_backport': ['unicodedata2']
 }
-
 
 here = os.path.abspath(os.path.dirname(__file__))
 
@@ -58,9 +52,6 @@ setup(
     install_requires=REQUIRED,
     extras_require=EXTRAS,
     include_package_data=True,
-    package_data={
-        'charset_normalizer': ['assets/frequencies.json', ],
-    },
     license='MIT',
     entry_points={
         'console_scripts':
